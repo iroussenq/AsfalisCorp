@@ -9,6 +9,6 @@ import java.util.UUID;
 public interface RodoviaRepository {
     List<Rodovia> getAll();
     Optional<Rodovia> getOne(UUID id);
-    void putOne(Rodovia Rodovia);
-    void delete(Rodovia Rodovia);
+    void putOne(Rodovia rodovia);
+    void delete(Rodovia rodovia);
 }

@@ -9,6 +9,6 @@ import java.util.UUID;
 public interface CondutorRepository {
     List<Condutor> getAll();
     Optional<Condutor> getOne(UUID id);
-    void putOne(Condutor Condutor);
-    void delete(Condutor Condutor);
+    void putOne(Condutor condutor);
+    void delete(Condutor condutor);
 }

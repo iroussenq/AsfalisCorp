@@ -9,6 +9,6 @@ import java.util.UUID;
 public interface AcidenteRepository {
     List<Acidente> getAll();
     Optional<Acidente> getOne(UUID id);
-    void putOne(Acidente Acidente);
-    void delete(Acidente Acidente);
+    void putOne(Acidente acidente);
+    void delete(Acidente acidente);
 }

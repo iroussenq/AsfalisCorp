@@ -6,5 +6,5 @@ import lombok.Getter;
 public class VeiculoModel {
     private String nome;
     private String placa;
-    private String ano;
+    private Integer ano;
 }

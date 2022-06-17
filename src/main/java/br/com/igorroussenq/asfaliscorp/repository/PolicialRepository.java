@@ -9,6 +9,6 @@ import java.util.UUID;
 public interface PolicialRepository {
     List<Policial> getAll();
     Optional<Policial> getOne(UUID id);
-    void putOne(Policial Policial);
-    void delete(Policial Policial);
+    void putOne(Policial policial);
+    void delete(Policial policial);
 }

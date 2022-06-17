@@ -9,6 +9,6 @@ import java.util.UUID;
 public interface VeiculoRepository {
     List<Veiculo> getAll();
     Optional<Veiculo> getOne(UUID id);
-    void putOne(Veiculo Veiculo);
-    void delete(Veiculo Veiculo);
+    void putOne(Veiculo veiculo);
+    void delete(Veiculo veiculo);
 }

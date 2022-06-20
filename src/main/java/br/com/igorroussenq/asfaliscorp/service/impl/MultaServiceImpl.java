@@ -38,6 +38,8 @@ public class MultaServiceImpl implements MultaService {
 
     @Override
     public Multa remover(UUID id) {
-        return null;
+        Multa multa = this.consultarUm(id);
+        multaRepository.delete(multa);
+        return multa;
     }
 }

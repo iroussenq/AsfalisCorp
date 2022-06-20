@@ -11,4 +11,5 @@ public interface PolicialRepository {
     Optional<Policial> getOne(UUID id);
     void putOne(Policial policial);
     void delete(Policial policial);
+
 }

@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 @Getter
 public class PolicialModel {
     private String nome;
-    private LocalDateTime dataDeNascimento;
+    private LocalDate dataDeNascimento;
     private String cpf;
     private String patente;
 }

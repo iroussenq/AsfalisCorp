@@ -1,5 +1,6 @@
 package br.com.igorroussenq.asfaliscorp.domain;
 
+import br.com.igorroussenq.asfaliscorp.helper.StringUtils;
 import lombok.Getter;
 
 import java.time.LocalDate;
@@ -9,13 +10,13 @@ public class Policial extends Pessoa{
 
     private String patente;
 
-    public Policial(String nome, String cpf, LocalDateTime dataDeNascimento, String patente) {
+    public Policial(String nome, String cpf, LocalDate dataDeNascimento, String patente) {
         super(nome, cpf, dataDeNascimento);
         this.patente = patente;
     }
 
-    public Policial editar(final String nome, String cpf,final LocalDate niver, final String cpf) {
-        super.editar(nome, niver);
+    public Policial editar(final String nome,final String cpf,final LocalDate dataDeNascimento, final String patente) {
+        super.editar(nome,dataDeNascimento);
         this.cpf = StringUtils.extractNumbers(cpf);
         return this;
     }

@@ -18,4 +18,11 @@ public class Veiculo {
         this.placa = placa;
         this.ano = ano;
     }
+
+    public Veiculo editar(String nome,String placa,Integer ano){
+        this.nome = nome;
+        this.placa = placa;
+        this.ano = ano;
+        return this;
+    }
 }

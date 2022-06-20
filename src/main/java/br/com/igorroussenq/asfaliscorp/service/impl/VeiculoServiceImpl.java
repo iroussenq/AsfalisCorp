@@ -38,7 +38,9 @@ public class VeiculoServiceImpl implements VeiculoService {
 
     @Override
     public Veiculo alterar(UUID id, VeiculoModel model) {
-        return null;
+        Veiculo veiculo = this.consultarUm(id);
+        veiculo.editar(model.getNome(), model.getPlaca(), model.getAno());
+        return veiculo;
     }
 
     @Override

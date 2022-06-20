@@ -39,7 +39,8 @@ public class PolicialServiceImpl implements PolicialService {
     @Override
     public Policial alterar(UUID id, PolicialModel model) {
         Policial policial = this.consultarUm(id);
-        policial
+        policial.editar(model.getNome(), model.getCpf(), model.getDataDeNascimento(), model.getPatente());
+        return policial;
     }
 
     @Override

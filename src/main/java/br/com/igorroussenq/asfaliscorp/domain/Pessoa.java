@@ -28,8 +28,9 @@ public abstract class Pessoa {
         return cpf;
     }
 
-    protected Pessoa editar(final String nome, final LocalDate dataDeNascimento) {
+    protected Pessoa editar(final String nome,final String cpf, final LocalDate dataDeNascimento) {
         this.nome = nome;
+        this.cpf = cpf;
         this.dataDeNascimento = dataDeNascimento;
         return this;
     }

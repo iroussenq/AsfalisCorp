@@ -45,6 +45,8 @@ public class VeiculoServiceImpl implements VeiculoService {
 
     @Override
     public Veiculo remover(UUID id) {
-        return null;
+        Veiculo veiculo = this.consultarUm(id);
+        veiculoRepository.delete(veiculo);
+        return veiculo;
     }
 }

@@ -9,6 +9,7 @@ import java.util.UUID;
 public interface MultaRepository {
     List<Multa> getAll();
     Optional<Multa> getOne(UUID id);
+    List<Multa> getAllIds(List<UUID> ids);
     void putOne(Multa multa);
     void delete(Multa multa);
 }

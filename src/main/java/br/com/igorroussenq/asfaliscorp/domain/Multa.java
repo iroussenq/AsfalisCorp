@@ -17,4 +17,12 @@ public class Multa {
         this.condicaoDaMulta = condicaoDaMulta;
         this.valorDaMulta = valorDaMulta;
     }
+
+    public Multa editar(final String condicaoDaMulta,final BigDecimal valorDaMulta){
+        this.id = UUID.randomUUID();
+        this.condicaoDaMulta = condicaoDaMulta;
+        this.valorDaMulta = valorDaMulta;
+        return this;
+    }
+
 }

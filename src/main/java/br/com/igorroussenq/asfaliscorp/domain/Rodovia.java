@@ -18,4 +18,11 @@ public class Rodovia {
         this.mortes = mortes;
     }
 
+    public Rodovia editar(String nome, Integer km, Integer mortes){
+        this.nome = nome;
+        this.km = km;
+        this.mortes = mortes;
+        return this;
+    }
+
 }

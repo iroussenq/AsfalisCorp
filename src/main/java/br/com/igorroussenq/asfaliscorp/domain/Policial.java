@@ -16,8 +16,8 @@ public class Policial extends Pessoa{
     }
 
     public Policial editar(final String nome,final String cpf,final LocalDate dataDeNascimento, final String patente) {
-        super.editar(nome,dataDeNascimento);
-        this.cpf = StringUtils.extractNumbers(cpf);
+        super.editar(nome,cpf,dataDeNascimento);
+        this.patente = patente;
         return this;
     }
     }

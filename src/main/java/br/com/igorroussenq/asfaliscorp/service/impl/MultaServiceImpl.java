@@ -18,7 +18,6 @@ public class MultaServiceImpl implements MultaService {
     @Autowired
     private MultaRepository multaRepository;
 
-
     @Override
     public List<Multa> consultar() {
         return multaRepository.getAll();
@@ -30,9 +29,21 @@ public class MultaServiceImpl implements MultaService {
     }
 
     @Override
+    public List<Multa> consultarTodos(List<UUID> ids) {
+        return multaRepository.getAllIds(ids);
+    }
+
+    @Override
     public Multa cadastrar(MultaModel model) {
         Multa multa = new Multa(model.getCondicaoDaMulta(),model.getValorDaMulta());
         multaRepository.putOne(multa);
+        return multa;
+    }
+
+    @Override
+    public Multa alterar(UUID id, MultaModel model) {
+        Multa multa = this.consultarUm(id);
+        multa.editar(model.getCondicaoDaMulta(),model.getValorDaMulta());
         return multa;
     }
 

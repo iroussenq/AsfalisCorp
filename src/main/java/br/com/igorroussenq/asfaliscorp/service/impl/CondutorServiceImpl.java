@@ -45,6 +45,6 @@ public class CondutorServiceImpl implements CondutorService {
     public Condutor remover(UUID id) {
         Condutor condutor = this.consultarUm(id);
         condutorRepository.delete(condutor);
-        return null;
+        return condutor;
     }
 }

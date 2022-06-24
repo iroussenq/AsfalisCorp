@@ -27,8 +27,8 @@ public class AcidenteController {
         return acidenteService.cadastrar(model);
     }
 
-    @PutMapping("/adicionar-produto/{id}")
-    public Acidente adicionarProduto(@PathVariable UUID id, @RequestBody AdicionarMultaModel model) {
+    @PutMapping("/adicionar-multa/{id}")
+    public Acidente adicionarMulta(@PathVariable UUID id, @RequestBody AdicionarMultaModel model) {
         return acidenteService.adicionarMulta(id, model);
     }
 

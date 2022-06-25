@@ -14,7 +14,7 @@ public abstract class Pessoa {
 
     private UUID id;
     private String nome;
-    String cpf;
+    private String cpf;
     private LocalDate dataDeNascimento;
 
     protected Pessoa(final String nome,final String cpf,final LocalDate dataDeNascimento){

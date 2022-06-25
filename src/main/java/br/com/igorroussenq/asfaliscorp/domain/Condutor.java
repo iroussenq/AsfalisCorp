@@ -11,7 +11,10 @@ public class Condutor extends Pessoa{
 
     private EnumStatusCondutor statusCondutor;
 
-    public Condutor(final String nome, final String cpf, final LocalDate dataDeNascimento, final EnumStatusCondutor statusCondutor) {
+    public Condutor(final String nome,
+                    final String cpf,
+                    final LocalDate dataDeNascimento,
+                    final EnumStatusCondutor statusCondutor) {
         super(nome, cpf, dataDeNascimento);
         this.statusCondutor = statusCondutor;
     }

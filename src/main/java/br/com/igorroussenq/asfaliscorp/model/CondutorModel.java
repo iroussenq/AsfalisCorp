@@ -16,11 +16,12 @@ public class CondutorModel {
     @Length(min = 2, max = 30)
     private String nome;
 
-    @NotNull
-    private String cpf;
-
     @NotNull(message = "A data de aniversário não pode ser nula")
     private LocalDate dataDeNascimento;
+
+
+    @NotNull
+    private String cpf;
 
     @NotNull
     private EnumStatusCondutor statusCondutor;

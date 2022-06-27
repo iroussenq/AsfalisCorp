@@ -29,7 +29,7 @@ public class CondutorServiceImpl implements CondutorService {
 
     @Override
     public Condutor cadastrar(CondutorModel model) {
-        Condutor condutor = new Condutor(model.getNome(), model.getCpf(), model.getDataDeNascimento(),model.getStatusCondutor());
+        Condutor condutor = new Condutor(model.getNome(),  model.getDataDeNascimento(), model.getCpf(), model.getStatusCondutor());
         condutorRepository.putOne(condutor);
         return condutor;
     }
@@ -37,7 +37,7 @@ public class CondutorServiceImpl implements CondutorService {
     @Override
     public Condutor alterar(UUID id, CondutorModel model) {
         Condutor condutor = this.consultarUm(id);
-        condutor.editar(model.getNome(), model.getCpf(), model.getDataDeNascimento(),model.getStatusCondutor());
+        condutor.editar(model.getNome(), model.getDataDeNascimento(),model.getCpf(), model.getStatusCondutor());
         return condutor;
     }
 

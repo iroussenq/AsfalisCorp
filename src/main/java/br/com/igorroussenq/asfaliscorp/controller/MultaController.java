@@ -1,11 +1,14 @@
 package br.com.igorroussenq.asfaliscorp.controller;
 
 import br.com.igorroussenq.asfaliscorp.domain.Multa;
+import br.com.igorroussenq.asfaliscorp.domain.Veiculo;
 import br.com.igorroussenq.asfaliscorp.model.MultaModel;
+import br.com.igorroussenq.asfaliscorp.model.VeiculoModel;
 import br.com.igorroussenq.asfaliscorp.service.MultaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.UUID;
 
@@ -21,9 +24,9 @@ public class MultaController {
         return multaService.consultar();
     }
 
-    @GetMapping("/consultar_um/{id}")
-    public Multa consultarUm(@PathVariable UUID id) {
-        return multaService.consultarUm(id);
+    @PutMapping("/alterar/{id}")
+    public Multa alterar(@PathVariable UUID id, @RequestBody @Valid MultaModel model) {
+        return multaService.alterar(id, model);
     }
 
     @PostMapping("/cadastrar")

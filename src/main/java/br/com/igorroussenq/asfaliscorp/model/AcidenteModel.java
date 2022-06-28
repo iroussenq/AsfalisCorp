@@ -9,4 +9,5 @@ public class AcidenteModel {
     private UUID idPolicial;
     private UUID idRodovia;
     private UUID idCondutor;
+    private UUID idVeiculo;
 }

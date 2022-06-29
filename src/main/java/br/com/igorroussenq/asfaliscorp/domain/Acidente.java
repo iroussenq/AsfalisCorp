@@ -2,6 +2,7 @@ package br.com.igorroussenq.asfaliscorp.domain;
 
 import lombok.Getter;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -14,9 +15,9 @@ public class Acidente {
     private List<Multa> multas;
     private Policial policial;
     private Condutor condutor;
-    private LocalDateTime dataDoAcidente;
+    private LocalDate dataDoAcidente;
 
-    public Acidente(final Condutor condutor,final Policial policial,final Rodovia rodovia, final Veiculo veiculo){
+    public Acidente(final Condutor condutor,final Policial policial,final Rodovia rodovia, final Veiculo veiculo, final LocalDate dataDoAcidente){
         this.id = UUID.randomUUID();
         this.rodovia = rodovia;
         this.condutor = condutor;

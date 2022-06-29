@@ -56,7 +56,8 @@ public class AcidenteServiceImpl implements AcidenteService {
         var policial = policialService.consultarUm(model.getIdPolicial());
         var rodovia = rodoviaService.consultarUm(model.getIdRodovia());
         var veiculo = veiculoService.consultarUm(model.getIdVeiculo());
-        var acidente = new Acidente( condutor,policial, rodovia, veiculo);
+        var dataDoAcidente = model.getDataDoAcidente();
+        var acidente = new Acidente(condutor,policial, rodovia, veiculo, dataDoAcidente);
         acidenteRepository.putOne(acidente);
         return acidente;
     }

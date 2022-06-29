@@ -52,11 +52,11 @@ public class AcidenteServiceImpl implements AcidenteService {
 
     @Override
     public Acidente cadastrar(AcidenteModel model) {
-        var policial = policialService.consultarUm(model.getIdPolicial());
         var condutor = condutorService.consultarUm(model.getIdCondutor());
+        var policial = policialService.consultarUm(model.getIdPolicial());
         var rodovia = rodoviaService.consultarUm(model.getIdRodovia());
         var veiculo = veiculoService.consultarUm(model.getIdVeiculo());
-        var acidente = new Acidente(policial, condutor, rodovia, veiculo);
+        var acidente = new Acidente( condutor,policial, rodovia, veiculo);
         acidenteRepository.putOne(acidente);
         return acidente;
     }

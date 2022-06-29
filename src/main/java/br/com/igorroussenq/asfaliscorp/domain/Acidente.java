@@ -16,7 +16,7 @@ public class Acidente {
     private Condutor condutor;
     private LocalDateTime dataDoAcidente;
 
-    public Acidente(final Policial policial,final Condutor condutor,final Rodovia rodovia, final Veiculo veiculo){
+    public Acidente(final Condutor condutor,final Policial policial,final Rodovia rodovia, final Veiculo veiculo){
         this.id = UUID.randomUUID();
         this.rodovia = rodovia;
         this.condutor = condutor;

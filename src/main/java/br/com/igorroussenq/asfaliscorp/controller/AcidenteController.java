@@ -1,6 +1,7 @@
 package br.com.igorroussenq.asfaliscorp.controller;
 
 import br.com.igorroussenq.asfaliscorp.domain.Acidente;
+import br.com.igorroussenq.asfaliscorp.domain.Condutor;
 import br.com.igorroussenq.asfaliscorp.model.AcidenteModel;
 import br.com.igorroussenq.asfaliscorp.model.AdicionarMultaModel;
 import br.com.igorroussenq.asfaliscorp.service.AcidenteService;
@@ -32,4 +33,9 @@ public class AcidenteController {
         return acidenteService.adicionarMulta(id, model);
     }
 
+    @DeleteMapping("/remover/{id}")
+    public Acidente remover(@PathVariable UUID id) {
+        return acidenteService.remover(id);
+    }
 }
+

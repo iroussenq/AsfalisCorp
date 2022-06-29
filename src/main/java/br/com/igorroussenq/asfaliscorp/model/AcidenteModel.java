@@ -6,8 +6,8 @@ import java.util.UUID;
 
 @Getter
 public class AcidenteModel {
+    private UUID idCondutor;
     private UUID idPolicial;
     private UUID idRodovia;
-    private UUID idCondutor;
     private UUID idVeiculo;
 }

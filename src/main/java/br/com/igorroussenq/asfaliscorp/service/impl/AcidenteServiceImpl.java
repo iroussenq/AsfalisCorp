@@ -1,6 +1,7 @@
 package br.com.igorroussenq.asfaliscorp.service.impl;
 
 import br.com.igorroussenq.asfaliscorp.domain.Acidente;
+import br.com.igorroussenq.asfaliscorp.domain.Condutor;
 import br.com.igorroussenq.asfaliscorp.domain.Multa;
 import br.com.igorroussenq.asfaliscorp.exceptions.NaoExisteException;
 import br.com.igorroussenq.asfaliscorp.model.AcidenteModel;
@@ -29,10 +30,19 @@ public class AcidenteServiceImpl implements AcidenteService {
     private MultaService multaService;
     @Autowired
     private RodoviaService rodoviaService;
+    @Autowired
+    private VeiculoService veiculoService;
 
     @Override
     public List<Acidente> consultar() {
         return acidenteRepository.getAll();
+    }
+
+    @Override
+    public Acidente remover(UUID id) {
+        Acidente acidente = this.consultarUm(id);
+        acidenteRepository.delete(acidente);
+        return acidente;
     }
 
     @Override
@@ -45,7 +55,8 @@ public class AcidenteServiceImpl implements AcidenteService {
         var policial = policialService.consultarUm(model.getIdPolicial());
         var condutor = condutorService.consultarUm(model.getIdCondutor());
         var rodovia = rodoviaService.consultarUm(model.getIdRodovia());
-        var acidente = new Acidente(policial, condutor, rodovia);
+        var veiculo = veiculoService.consultarUm(model.getIdVeiculo());
+        var acidente = new Acidente(policial, condutor, rodovia, veiculo);
         acidenteRepository.putOne(acidente);
         return acidente;
     }

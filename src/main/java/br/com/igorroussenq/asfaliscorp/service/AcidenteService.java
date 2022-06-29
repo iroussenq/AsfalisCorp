@@ -9,7 +9,7 @@ import java.util.UUID;
 
 public interface AcidenteService {
     List<Acidente> consultar();
-
+    Acidente remover(UUID id);
     Acidente consultarUm(UUID id);
     Acidente cadastrar(AcidenteModel model);
     Acidente adicionarMulta(UUID id, AdicionarMultaModel model);

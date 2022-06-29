@@ -12,23 +12,23 @@ public class Acidente {
     private UUID id;
     private Rodovia rodovia;
     private Veiculo veiculo;
-    private List<Multa> multas;
     private Policial policial;
     private Condutor condutor;
     private LocalDate dataDoAcidente;
 
-    public Acidente(final Condutor condutor,final Policial policial,final Rodovia rodovia, final Veiculo veiculo, final LocalDate dataDoAcidente){
+    private String relatorio;
+
+    private Integer casualidades;
+
+    public Acidente(final Condutor condutor,final Policial policial,final Rodovia rodovia, final Veiculo veiculo, final LocalDate dataDoAcidente, final String relatorio,final Integer casualidades){
         this.id = UUID.randomUUID();
         this.rodovia = rodovia;
         this.condutor = condutor;
         this.policial = policial;
         this.veiculo = veiculo;
         this.dataDoAcidente = dataDoAcidente;
-    }
-
-    public Acidente addMulta(final List<Multa> multas) {
-        this.multas.addAll(multas);
-        return this;
+        this.relatorio = relatorio;
+        this.casualidades = casualidades;
     }
 
 }

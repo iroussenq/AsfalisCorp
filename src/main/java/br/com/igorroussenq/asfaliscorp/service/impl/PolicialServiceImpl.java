@@ -1,6 +1,5 @@
 package br.com.igorroussenq.asfaliscorp.service.impl;
 
-import br.com.igorroussenq.asfaliscorp.domain.Multa;
 import br.com.igorroussenq.asfaliscorp.domain.Policial;
 import br.com.igorroussenq.asfaliscorp.exceptions.NaoExisteException;
 import br.com.igorroussenq.asfaliscorp.model.PolicialModel;
@@ -8,7 +7,6 @@ import br.com.igorroussenq.asfaliscorp.repository.PolicialRepository;
 import br.com.igorroussenq.asfaliscorp.service.PolicialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.UUID;

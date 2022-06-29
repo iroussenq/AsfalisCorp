@@ -12,4 +12,6 @@ public class AcidenteModel {
     private UUID idRodovia;
     private UUID idVeiculo;
     private LocalDate dataDoAcidente;
+    private String relatorio;
+    private Integer casualidades;
 }

@@ -1,11 +1,8 @@
 package br.com.igorroussenq.asfaliscorp.service.impl;
 
 import br.com.igorroussenq.asfaliscorp.domain.Acidente;
-import br.com.igorroussenq.asfaliscorp.domain.Condutor;
-import br.com.igorroussenq.asfaliscorp.domain.Multa;
 import br.com.igorroussenq.asfaliscorp.exceptions.NaoExisteException;
 import br.com.igorroussenq.asfaliscorp.model.AcidenteModel;
-import br.com.igorroussenq.asfaliscorp.model.AdicionarMultaModel;
 import br.com.igorroussenq.asfaliscorp.repository.AcidenteRepository;
 import br.com.igorroussenq.asfaliscorp.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +23,6 @@ public class AcidenteServiceImpl implements AcidenteService {
     @Autowired
     private PolicialService policialService;
 
-    @Autowired
-    private MultaService multaService;
     @Autowired
     private RodoviaService rodoviaService;
     @Autowired
@@ -57,16 +52,14 @@ public class AcidenteServiceImpl implements AcidenteService {
         var rodovia = rodoviaService.consultarUm(model.getIdRodovia());
         var veiculo = veiculoService.consultarUm(model.getIdVeiculo());
         var dataDoAcidente = model.getDataDoAcidente();
-        var acidente = new Acidente(condutor,policial, rodovia, veiculo, dataDoAcidente);
-        acidenteRepository.putOne(acidente);
-        return acidente;
-    }
+        var relatorio = model.getRelatorio();
+        var casualidades = model.getCasualidades();
 
-    @Override
-    public Acidente adicionarMulta(UUID id, AdicionarMultaModel model) {
-        Acidente acidente = this.consultarUm(id);
-        List<Multa> multas = multaService.consultarTodos(model.getIdsMultas());
-        acidente.addMulta(multas);
+        var acidente = new Acidente(condutor,policial, rodovia, veiculo, dataDoAcidente, relatorio, casualidades);
+        Integer novasCasualidades = rodovia.getMortes() + casualidades;
+        rodovia.editar(rodovia.getNome(), rodovia.getKm(), novasCasualidades);
+
+        acidenteRepository.putOne(acidente);
         return acidente;
     }
 

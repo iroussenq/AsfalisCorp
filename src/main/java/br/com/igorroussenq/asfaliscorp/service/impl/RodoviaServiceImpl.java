@@ -35,7 +35,7 @@ public class RodoviaServiceImpl implements RodoviaService {
 
     @Override
     public Rodovia cadastrar(RodoviaModel model) {
-        Rodovia rodovia = new Rodovia(model.getNome(), model.getKm(), model.getMortes());
+        Rodovia rodovia = new Rodovia(model.getNome(), model.getCep(), model.getMortes());
         rodoviaRepository.putOne(rodovia);
         return rodovia;
     }
@@ -43,7 +43,7 @@ public class RodoviaServiceImpl implements RodoviaService {
     @Override
     public Rodovia alterar(UUID id, RodoviaModel model) {
         Rodovia rodovia = this.consultarUm(id);
-        rodovia.editar(model.getNome(), model.getKm(), model.getMortes());
+        rodovia.editar(model.getNome(), model.getCep(), model.getMortes());
         return rodovia;
     }
 

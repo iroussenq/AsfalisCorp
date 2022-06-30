@@ -5,6 +5,6 @@ import lombok.Getter;
 @Getter
 public class RodoviaModel {
     private String nome;
-    private Integer km;
+    private String cep;
     private Integer mortes;
 }

@@ -57,7 +57,7 @@ public class AcidenteServiceImpl implements AcidenteService {
 
         var acidente = new Acidente(condutor,policial, rodovia, veiculo, dataDoAcidente, relatorio, casualidades);
         Integer novasCasualidades = rodovia.getMortes() + casualidades;
-        rodovia.editar(rodovia.getNome(), rodovia.getKm(), novasCasualidades);
+        rodovia.editar(rodovia.getNome(), rodovia.getCep(), novasCasualidades);
 
         acidenteRepository.putOne(acidente);
         return acidente;

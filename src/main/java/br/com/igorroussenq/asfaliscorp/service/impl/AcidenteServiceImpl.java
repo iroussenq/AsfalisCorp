@@ -18,39 +18,39 @@ public class AcidenteServiceImpl implements AcidenteService {
     private AcidenteRepository acidenteRepository;
 
     @Autowired
-    private CondutorService condutorService;
+    private CondutorServiceImpl condutorService;
 
     @Autowired
-    private PolicialService policialService;
+    private PolicialServiceImpl policialService;
 
     @Autowired
-    private RodoviaService rodoviaService;
+    private RodoviaServiceImpl rodoviaService;
     @Autowired
-    private VeiculoService veiculoService;
+    private VeiculoServiceImpl veiculoService;
 
     @Override
-    public List<Acidente> consultar() {
-        return acidenteRepository.getAll();
+    public List<AcidenteModel> consultar() {
+        return acidenteRepository.findAll().stream().map(AcidenteModel::new).toList();
     }
 
     @Override
-    public Acidente remover(UUID id) {
-        Acidente acidente = this.consultarUm(id);
+    public AcidenteModel remover(UUID id) {
+        Acidente acidente = this.buscarPorId(id);
         acidenteRepository.delete(acidente);
-        return acidente;
+        return new AcidenteModel(acidente);
     }
 
     @Override
-    public Acidente consultarUm(UUID id) {
-        return acidenteRepository.getOne(id).orElseThrow(NaoExisteException::new);
+    public AcidenteModel consultar(UUID id) {
+        return new AcidenteModel(this.buscarPorId(id));
     }
 
     @Override
-    public Acidente cadastrar(AcidenteModel model) {
-        var condutor = condutorService.consultarUm(model.getIdCondutor());
-        var policial = policialService.consultarUm(model.getIdPolicial());
-        var rodovia = rodoviaService.consultarUm(model.getIdRodovia());
-        var veiculo = veiculoService.consultarUm(model.getIdVeiculo());
+    public AcidenteModel cadastrar(AcidenteModel model) {
+        var condutor = condutorService.consultaPorCondutor(model.getCondutor().getId());
+        var policial = policialService.consultaPorPolicial(model.getPolicial().getId());
+        var rodovia = rodoviaService.consultaPorRodovia(model.getRodovia().getId());
+        var veiculo = veiculoService.consultaPorVeiculo(model.getVeiculo().getId());
         var dataDoAcidente = model.getDataDoAcidente();
         var relatorio = model.getRelatorio();
         var casualidades = model.getCasualidades();
@@ -58,9 +58,11 @@ public class AcidenteServiceImpl implements AcidenteService {
         var acidente = new Acidente(condutor,policial, rodovia, veiculo, dataDoAcidente, relatorio, casualidades);
         Integer novasCasualidades = rodovia.getMortes() + casualidades;
         rodovia.editar(rodovia.getNome(), rodovia.getCep(), novasCasualidades);
+        return new AcidenteModel(acidenteRepository.save(acidente));
+    }
 
-        acidenteRepository.putOne(acidente);
-        return acidente;
+    private Acidente buscarPorId(UUID id){
+        return this.acidenteRepository.findById(id).orElseThrow(NaoExisteException::new);
     }
 
 }

@@ -1,8 +1,10 @@
 package br.com.igorroussenq.asfaliscorp.service.impl;
 
+import br.com.igorroussenq.asfaliscorp.domain.Condutor;
 import br.com.igorroussenq.asfaliscorp.domain.Rodovia;
 import br.com.igorroussenq.asfaliscorp.domain.Veiculo;
 import br.com.igorroussenq.asfaliscorp.exceptions.NaoExisteException;
+import br.com.igorroussenq.asfaliscorp.model.CondutorModel;
 import br.com.igorroussenq.asfaliscorp.model.RodoviaModel;
 import br.com.igorroussenq.asfaliscorp.model.VeiculoModel;
 import br.com.igorroussenq.asfaliscorp.repository.RodoviaRepository;
@@ -15,6 +17,7 @@ import org.springframework.ui.Model;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class RodoviaServiceImpl implements RodoviaService {
@@ -22,35 +25,42 @@ public class RodoviaServiceImpl implements RodoviaService {
     @Autowired
     private RodoviaRepository rodoviaRepository;
 
-
     @Override
-    public List<Rodovia> consultar() {
-        return rodoviaRepository.getAll();
+    public List<RodoviaModel> consultar() {
+        return rodoviaRepository.findAll().stream().map(RodoviaModel::new).collect(Collectors.toList());
     }
 
     @Override
-    public Rodovia consultarUm(UUID id) {
-        return rodoviaRepository.getOne(id).orElseThrow(NaoExisteException::new);
+    public RodoviaModel consultar(UUID id) {
+        return new RodoviaModel(this.buscarPorId(id));
+
     }
 
     @Override
-    public Rodovia cadastrar(RodoviaModel model) {
-        Rodovia rodovia = new Rodovia(model.getNome(), model.getCep(), model.getMortes());
-        rodoviaRepository.putOne(rodovia);
-        return rodovia;
+    public RodoviaModel cadastrar(RodoviaModel model) {
+        Rodovia rodovia = new Rodovia(model);
+        return new RodoviaModel(this.rodoviaRepository.save(rodovia));
     }
 
     @Override
-    public Rodovia alterar(UUID id, RodoviaModel model) {
-        Rodovia rodovia = this.consultarUm(id);
+    public RodoviaModel alterar(RodoviaModel model) {
+        Rodovia rodovia = this.buscarPorId(model.getId());
         rodovia.editar(model.getNome(), model.getCep(), model.getMortes());
-        return rodovia;
+        return new RodoviaModel(this.rodoviaRepository.save(rodovia));
     }
 
     @Override
-    public Rodovia remover(UUID id) {
-        Rodovia rodovia = this.consultarUm(id);
+    public RodoviaModel remover(UUID id) {
+        Rodovia rodovia = this.buscarPorId(id);
         rodoviaRepository.delete(rodovia);
-        return rodovia;
+        return new RodoviaModel(this.rodoviaRepository.save(rodovia));
+    }
+
+    private Rodovia buscarPorId(UUID id) {
+        return this.rodoviaRepository.findById(id).orElseThrow(NaoExisteException::new);
+    }
+
+    protected Rodovia consultaPorRodovia(UUID id){
+        return this.buscarPorId(id);
     }
 }

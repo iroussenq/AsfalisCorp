@@ -18,22 +18,22 @@ public class CondutorController {
     private CondutorService condutorService;
 
     @GetMapping("/consultar")
-    public List<Condutor> consultar() {
+    public List<CondutorModel> consultar() {
         return condutorService.consultar();
     }
 
     @PostMapping("/cadastrar")
-    public Condutor cadastrar(@RequestBody @Valid CondutorModel model) {
+    public CondutorModel cadastrar(@RequestBody @Valid CondutorModel model) {
         return condutorService.cadastrar(model);
     }
 
-    @PutMapping("/alterar/{id}")
-    public Condutor alterar(@PathVariable UUID id, @RequestBody @Valid CondutorModel model) {
-        return condutorService.alterar(id, model);
+    @PutMapping("/alterar")
+    public CondutorModel alterar(@RequestBody @Valid CondutorModel model) {
+        return condutorService.alterar(model);
     }
 
     @DeleteMapping("/remover/{id}")
-    public Condutor remover(@PathVariable UUID id) {
+    public CondutorModel remover(@PathVariable UUID id) {
         return condutorService.remover(id);
     }
 }

@@ -17,17 +17,17 @@ public class AcidenteController {
     private AcidenteService acidenteService;
 
     @GetMapping("/consultar")
-    public List<Acidente> consultar() {
+    public List<AcidenteModel> consultar() {
         return acidenteService.consultar();
     }
 
     @PostMapping("/cadastrar")
-    public Acidente cadastrar(@RequestBody AcidenteModel model) {
+    public AcidenteModel cadastrar(@RequestBody AcidenteModel model) {
         return acidenteService.cadastrar(model);
     }
 
     @DeleteMapping("/remover/{id}")
-    public Acidente remover(@PathVariable UUID id) {
+    public AcidenteModel remover(@PathVariable UUID id) {
         return acidenteService.remover(id);
     }
 }

@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.UUID;
 
 public interface RodoviaService {
-    List<Rodovia> consultar();
-    Rodovia consultarUm(UUID id);
-    Rodovia cadastrar(RodoviaModel model);
-    Rodovia alterar(UUID id, RodoviaModel model);
-    Rodovia remover(UUID id);
+    List<RodoviaModel> consultar();
+    RodoviaModel consultar(UUID id);
+    RodoviaModel cadastrar(RodoviaModel model);
+    RodoviaModel alterar(RodoviaModel model);
+    RodoviaModel remover(UUID id);
 }

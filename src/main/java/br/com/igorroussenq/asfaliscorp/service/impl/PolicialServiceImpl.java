@@ -1,8 +1,11 @@
 package br.com.igorroussenq.asfaliscorp.service.impl;
 
 import br.com.igorroussenq.asfaliscorp.domain.Policial;
+import br.com.igorroussenq.asfaliscorp.domain.Rodovia;
+import br.com.igorroussenq.asfaliscorp.domain.Veiculo;
 import br.com.igorroussenq.asfaliscorp.exceptions.NaoExisteException;
 import br.com.igorroussenq.asfaliscorp.model.PolicialModel;
+import br.com.igorroussenq.asfaliscorp.model.RodoviaModel;
 import br.com.igorroussenq.asfaliscorp.repository.PolicialRepository;
 import br.com.igorroussenq.asfaliscorp.service.PolicialService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class PolicialServiceImpl implements PolicialService {
@@ -18,33 +22,41 @@ public class PolicialServiceImpl implements PolicialService {
     private PolicialRepository policialRepository;
 
     @Override
-    public List<Policial> consultar() {
-        return policialRepository.getAll();
+    public List<PolicialModel> consultar() {
+        return policialRepository.findAll().stream().map(PolicialModel::new).collect(Collectors.toList());
     }
 
     @Override
-    public Policial consultarUm(UUID id) {
-        return policialRepository.getOne(id).orElseThrow(NaoExisteException::new);
+    public PolicialModel consultar(UUID id) {
+        return new PolicialModel(this.buscarPorId(id));
     }
 
     @Override
-    public Policial cadastrar(PolicialModel model) {
-        Policial policial = new Policial(model.getNome(), model.getCpf(), model.getDataDeNascimento(),model.getPatente());
-        policialRepository.putOne(policial);
-        return policial;
+    public PolicialModel cadastrar(PolicialModel model) {
+        Policial policial = new Policial(model);
+        return new PolicialModel(policialRepository.save(policial));
     }
 
     @Override
-    public Policial alterar(UUID id, PolicialModel model) {
-        Policial policial = this.consultarUm(id);
+    public PolicialModel alterar(PolicialModel model) {
+        Policial policial = this.buscarPorId(model.getId());
         policial.editar(model.getNome(), model.getCpf(), model.getDataDeNascimento(), model.getPatente());
-        return policial;
+        return new PolicialModel(this.policialRepository.save(policial));
     }
 
     @Override
-    public Policial remover(UUID id) {
-        Policial policial = this.consultarUm(id);
+    public PolicialModel remover(UUID id) {
+        Policial policial = this.buscarPorId(id);
         policialRepository.delete(policial);
-        return policial;
+        return new PolicialModel(policial);
     }
+
+    private Policial buscarPorId(UUID id) {
+        return this.policialRepository.findById(id).orElseThrow(NaoExisteException::new);
+    }
+
+    protected Policial consultaPorPolicial(UUID id){
+        return this.buscarPorId(id);
+    }
+
 }

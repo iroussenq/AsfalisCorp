@@ -1,14 +1,14 @@
 package br.com.igorroussenq.asfaliscorp.repository;
 
 import br.com.igorroussenq.asfaliscorp.domain.Condutor;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public interface CondutorRepository {
-    List<Condutor> getAll();
-    Optional<Condutor> getOne(UUID id);
-    void putOne(Condutor condutor);
-    void delete(Condutor condutor);
+@Repository
+public interface CondutorRepository extends JpaRepository<Condutor, UUID> {
+
 }

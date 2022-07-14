@@ -18,22 +18,22 @@ public class PolicialController {
     private PolicialService policialService;
 
     @GetMapping("/consultar")
-    public List<Policial> consultar() {
+    public List<PolicialModel> consultar() {
         return policialService.consultar();
     }
 
     @PostMapping("/cadastrar")
-    public Policial cadastrar(@RequestBody @Valid PolicialModel model) {
+    public PolicialModel cadastrar(@RequestBody @Valid PolicialModel model) {
         return policialService.cadastrar(model);
     }
 
-    @PutMapping("/alterar/{id}")
-    public Policial alterar(@PathVariable UUID id, @RequestBody @Valid PolicialModel model) {
-        return policialService.alterar(id, model);
+    @PutMapping("/alterar")
+    public PolicialModel alterar(@RequestBody @Valid PolicialModel model) {
+        return policialService.alterar(model);
     }
 
     @DeleteMapping("/remover/{id}")
-    public Policial remover(@PathVariable UUID id) {
+    public PolicialModel remover(@PathVariable UUID id) {
         return policialService.remover(id);
     }
 }

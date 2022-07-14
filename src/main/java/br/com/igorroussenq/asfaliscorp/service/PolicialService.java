@@ -8,9 +8,9 @@ import java.util.UUID;
 
 public interface PolicialService {
 
-    List<Policial> consultar();
-    Policial consultarUm(UUID id);
-    Policial cadastrar(PolicialModel model);
-    Policial alterar(UUID id, PolicialModel model);
-    Policial remover(UUID id);
+    List<PolicialModel> consultar();
+    PolicialModel consultar(UUID id);
+    PolicialModel cadastrar(PolicialModel model);
+    PolicialModel alterar(PolicialModel model);
+    PolicialModel remover(UUID id);
 }

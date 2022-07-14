@@ -18,22 +18,22 @@ public class RodoviaController {
     private RodoviaService rodoviaService;
 
     @GetMapping("/consultar")
-    public List<Rodovia> consultar() {
+    public List<RodoviaModel> consultar() {
         return rodoviaService.consultar();
     }
 
     @PostMapping("/cadastrar")
-    public Rodovia cadastrar(@RequestBody @Valid RodoviaModel model) {
+    public RodoviaModel cadastrar(@RequestBody @Valid RodoviaModel model) {
         return rodoviaService.cadastrar(model);
     }
 
-    @PutMapping("/alterar/{id}")
-    public Rodovia alterar(@PathVariable UUID id, @RequestBody @Valid RodoviaModel model) {
-        return rodoviaService.alterar(id, model);
+    @PutMapping("/alterar")
+    public RodoviaModel alterar(@RequestBody @Valid RodoviaModel model) {
+        return rodoviaService.alterar(model);
     }
 
     @DeleteMapping("/remover/{id}")
-    public Rodovia remover(@PathVariable UUID id) {
+    public RodoviaModel remover(@PathVariable UUID id) {
         return rodoviaService.remover(id);
     }
 }

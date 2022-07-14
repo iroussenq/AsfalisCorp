@@ -1,11 +1,21 @@
 package br.com.igorroussenq.asfaliscorp.domain;
 
+import br.com.igorroussenq.asfaliscorp.model.RodoviaModel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import java.util.UUID;
 
 @Getter
+@Entity
+@NoArgsConstructor
+@Table(name = "rodovia")
 public class Rodovia {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id",insertable = false,updatable = false,nullable = false,unique = true)
     private UUID id;
     private String nome;
     private String cep;
@@ -16,6 +26,12 @@ public class Rodovia {
         this.nome = nome;
         this.cep = cep;
         this.mortes = mortes;
+    }
+
+    public Rodovia(RodoviaModel model) {
+        this.nome = model.getNome();
+        this.cep = model.getCep();
+        this.mortes = model.getMortes();
     }
 
     public Rodovia editar(String nome, String cep, Integer mortes){
@@ -31,6 +47,4 @@ public class Rodovia {
         }
         return cep;
     }
-
-
 }

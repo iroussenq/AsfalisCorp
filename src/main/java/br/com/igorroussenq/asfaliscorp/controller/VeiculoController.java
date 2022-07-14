@@ -18,22 +18,22 @@ public class VeiculoController {
     private VeiculoService veiculoService;
 
     @GetMapping("/consultar")
-    public List<Veiculo> consultar() {
+    public List<VeiculoModel> consultar() {
         return veiculoService.consultar();
     }
 
     @PostMapping("/cadastrar")
-    public Veiculo cadastrar(@RequestBody @Valid VeiculoModel model) {
+    public VeiculoModel cadastrar(@RequestBody @Valid VeiculoModel model) {
         return veiculoService.cadastrar(model);
     }
 
-    @PutMapping("/alterar/{id}")
-    public Veiculo alterar(@PathVariable UUID id, @RequestBody @Valid VeiculoModel model) {
-        return veiculoService.alterar(id, model);
+    @PutMapping("/alterar")
+    public VeiculoModel alterar(@RequestBody @Valid VeiculoModel model) {
+        return veiculoService.alterar(model);
     }
 
     @DeleteMapping("/remover/{id}")
-    public Veiculo remover(@PathVariable UUID id) {
+    public VeiculoModel remover(@PathVariable UUID id) {
         return veiculoService.remover(id);
     }
 }

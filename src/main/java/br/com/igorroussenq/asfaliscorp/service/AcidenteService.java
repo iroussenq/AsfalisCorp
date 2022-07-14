@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.UUID;
 
 public interface AcidenteService {
-    List<Acidente> consultar();
-    Acidente remover(UUID id);
-    Acidente consultarUm(UUID id);
-    Acidente cadastrar(AcidenteModel model);
+    List<AcidenteModel> consultar();
+    AcidenteModel remover(UUID id);
+    AcidenteModel consultar(UUID id);
+    AcidenteModel cadastrar(AcidenteModel model);
 }

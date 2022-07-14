@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.UUID;
 
 public interface VeiculoService {
-    List<Veiculo> consultar();
-    Veiculo consultarUm(UUID id);
-    Veiculo cadastrar(VeiculoModel model);
-    Veiculo alterar(UUID id, VeiculoModel model);
-    Veiculo remover(UUID id);
+    List<VeiculoModel> consultar();
+    VeiculoModel consultar(UUID id);
+    VeiculoModel cadastrar(VeiculoModel model);
+    VeiculoModel alterar(VeiculoModel model);
+    VeiculoModel remover(UUID id);
 }

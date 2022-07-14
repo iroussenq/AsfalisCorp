@@ -3,6 +3,7 @@ package br.com.igorroussenq.asfaliscorp.domain;
 import br.com.igorroussenq.asfaliscorp.helper.StringUtils;
 import lombok.Getter;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
@@ -10,12 +11,17 @@ import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
+@MappedSuperclass
 @Getter
 public abstract class Pessoa {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id",insertable = false,updatable = false,nullable = false,unique = true)
     private UUID id;
     private String nome;
     private String cpf;
+    @Column(name = "data_de_nascimento")
     private LocalDate dataDeNascimento;
 
     protected Pessoa(final String nome,final String cpf,final LocalDate dataDeNascimento){
@@ -23,6 +29,12 @@ public abstract class Pessoa {
         this.nome = nome;
         this.cpf = StringUtils.extractNumbers(cpf);
         this.dataDeNascimento = dataDeNascimento;
+    }
+
+    protected Pessoa() {
+        this.id = UUID.randomUUID();
+        this.nome = nome;
+        this.dataDeNascimento = LocalDate.now();
     }
 
     public String getCpf() {

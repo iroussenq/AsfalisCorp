@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.UUID;
 
 public interface CondutorService {
-    List<Condutor> consultar();
-    Condutor consultarUm(UUID id);
-    Condutor cadastrar(CondutorModel model);
-    Condutor alterar(UUID id, CondutorModel model);
-    Condutor remover(UUID id);
+    List<CondutorModel> consultar();
+    CondutorModel consultar(UUID id);
+    CondutorModel cadastrar(CondutorModel model);
+    CondutorModel alterar(CondutorModel model);
+    CondutorModel remover(UUID id);
 }

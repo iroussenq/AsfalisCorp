@@ -36,4 +36,11 @@ public class RodoviaController {
     public RodoviaModel remover(@PathVariable UUID id) {
         return rodoviaService.remover(id);
     }
+
+    @GetMapping("/rodovia-5-mortes")
+    public List<RodoviaModel> rodoviaCincoMortes() {
+        return rodoviaService.buscaRodoviaComMaisQueCincoMortes();
+    }
+
+
 }

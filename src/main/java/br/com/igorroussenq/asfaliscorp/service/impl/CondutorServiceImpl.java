@@ -49,6 +49,11 @@ public class CondutorServiceImpl implements CondutorService {
         return new CondutorModel(condutor);
     }
 
+    @Override
+    public List<CondutorModel> buscaCondutoresEmbriagados() {
+        return condutorRepository.buscaCondutoresEmbriagados().stream().map(CondutorModel::new).collect(Collectors.toList());
+    }
+
     private Condutor buscarPorId(UUID id) {
         return this.condutorRepository.findById(id).orElseThrow(NaoExisteException::new);
     }

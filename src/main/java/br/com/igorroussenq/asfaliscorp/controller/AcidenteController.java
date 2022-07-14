@@ -30,5 +30,6 @@ public class AcidenteController {
     public AcidenteModel remover(@PathVariable UUID id) {
         return acidenteService.remover(id);
     }
+
 }
 

@@ -12,4 +12,5 @@ public interface RodoviaService {
     RodoviaModel cadastrar(RodoviaModel model);
     RodoviaModel alterar(RodoviaModel model);
     RodoviaModel remover(UUID id);
+    List<RodoviaModel> buscaRodoviaComMaisQueCincoMortes();
 }

@@ -1,19 +1,12 @@
 package br.com.igorroussenq.asfaliscorp.service.impl;
 
-import br.com.igorroussenq.asfaliscorp.domain.Condutor;
 import br.com.igorroussenq.asfaliscorp.domain.Rodovia;
-import br.com.igorroussenq.asfaliscorp.domain.Veiculo;
 import br.com.igorroussenq.asfaliscorp.exceptions.NaoExisteException;
-import br.com.igorroussenq.asfaliscorp.model.CondutorModel;
 import br.com.igorroussenq.asfaliscorp.model.RodoviaModel;
-import br.com.igorroussenq.asfaliscorp.model.VeiculoModel;
 import br.com.igorroussenq.asfaliscorp.repository.RodoviaRepository;
-import br.com.igorroussenq.asfaliscorp.repository.VeiculoRepository;
 import br.com.igorroussenq.asfaliscorp.service.RodoviaService;
-import br.com.igorroussenq.asfaliscorp.service.VeiculoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
 import java.util.List;
 import java.util.UUID;
@@ -54,6 +47,11 @@ public class RodoviaServiceImpl implements RodoviaService {
         Rodovia rodovia = this.buscarPorId(id);
         rodoviaRepository.delete(rodovia);
         return new RodoviaModel(rodovia);
+    }
+
+    @Override
+    public List<RodoviaModel> buscaRodoviaComMaisQueCincoMortes() {
+        return rodoviaRepository.buscaRodoviaComMaisQueCincoMortes().stream().map(RodoviaModel::new).collect(Collectors.toList());
     }
 
     private Rodovia buscarPorId(UUID id) {

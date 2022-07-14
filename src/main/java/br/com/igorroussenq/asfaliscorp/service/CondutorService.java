@@ -12,4 +12,5 @@ public interface CondutorService {
     CondutorModel cadastrar(CondutorModel model);
     CondutorModel alterar(CondutorModel model);
     CondutorModel remover(UUID id);
+    List<CondutorModel> buscaCondutoresEmbriagados();
 }

@@ -36,4 +36,9 @@ public class CondutorController {
     public CondutorModel remover(@PathVariable UUID id) {
         return condutorService.remover(id);
     }
+
+    @GetMapping("/busca-condutor-embriagado")
+    public List<CondutorModel> buscaCondutorEmbriagado() {
+        return condutorService.buscaCondutoresEmbriagados();
+    }
 }

@@ -61,6 +61,7 @@ public class AcidenteServiceImpl implements AcidenteService {
         return new AcidenteModel(acidenteRepository.save(acidente));
     }
 
+
     private Acidente buscarPorId(UUID id){
         return this.acidenteRepository.findById(id).orElseThrow(NaoExisteException::new);
     }

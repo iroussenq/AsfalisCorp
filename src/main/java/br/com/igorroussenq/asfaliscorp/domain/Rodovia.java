@@ -41,10 +41,4 @@ public class Rodovia {
         return this;
     }
 
-    public String getCep() {
-        if (this.cep.length() == 8) {
-            return cep.replaceAll("/^[0-9]{8}$/", "$1-$2");
-        }
-        return cep;
-    }
 }

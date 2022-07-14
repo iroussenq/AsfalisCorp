@@ -1,5 +1,6 @@
 package br.com.igorroussenq.asfaliscorp.domain;
 
+import br.com.igorroussenq.asfaliscorp.model.AcidenteModel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -51,6 +52,10 @@ public class Acidente {
         this.dataDoAcidente = dataDoAcidente;
         this.relatorio = relatorio;
         this.casualidades = casualidades;
+    }
+
+    public Acidente(AcidenteModel model){
+
     }
 
 }

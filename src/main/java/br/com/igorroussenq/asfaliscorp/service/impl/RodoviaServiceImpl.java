@@ -53,7 +53,7 @@ public class RodoviaServiceImpl implements RodoviaService {
     public RodoviaModel remover(UUID id) {
         Rodovia rodovia = this.buscarPorId(id);
         rodoviaRepository.delete(rodovia);
-        return new RodoviaModel(this.rodoviaRepository.save(rodovia));
+        return new RodoviaModel(rodovia);
     }
 
     private Rodovia buscarPorId(UUID id) {

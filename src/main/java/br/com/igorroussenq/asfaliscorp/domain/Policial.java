@@ -9,9 +9,10 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-@Getter
+
 @Entity
 @Table(name = "policial")
+@Getter
 @NoArgsConstructor
 public class Policial extends Pessoa{
 

@@ -14,7 +14,6 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class Condutor extends Pessoa{
 
-
     @Enumerated(EnumType.STRING)
     @Column(name = "status_condutor")
     private EnumStatusCondutor statusCondutor;
@@ -26,6 +25,7 @@ public class Condutor extends Pessoa{
         super(nome, cpf, dataDeNascimento);
         this.statusCondutor = statusCondutor;
     }
+
 
     public Condutor(CondutorModel model) {
         super(model.getNome(), model.getCpf(), model.getDataDeNascimento());

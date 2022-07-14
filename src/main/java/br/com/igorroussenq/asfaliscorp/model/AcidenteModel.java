@@ -2,12 +2,14 @@ package br.com.igorroussenq.asfaliscorp.model;
 
 import br.com.igorroussenq.asfaliscorp.domain.Acidente;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.util.Objects;
 import java.util.UUID;
 
 @Getter
+@NoArgsConstructor
 public class AcidenteModel {
     private UUID id;
     private CondutorModel condutor;

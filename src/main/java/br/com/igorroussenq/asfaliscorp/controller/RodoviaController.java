@@ -38,7 +38,7 @@ public class RodoviaController {
     }
 
     @GetMapping("/rodovia-5-mortes")
-    public List<RodoviaModel> rodoviaCincoMortes() {
+    public List<RodoviaModel> buscaRodoviaComMaisQueCincoMortes() {
         return rodoviaService.buscaRodoviaComMaisQueCincoMortes();
     }
 

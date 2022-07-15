@@ -14,6 +14,7 @@ import java.util.UUID;
 @Repository
 public interface CondutorRepository extends JpaRepository<Condutor, UUID> {
 
+    //Native Query
     @Query(value = "SELECT * FROM condutor WHERE status_condutor = 'EMBRIAGADO'", nativeQuery = true)
     List<Condutor> buscaCondutoresEmbriagados();
 

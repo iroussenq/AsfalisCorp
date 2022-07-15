@@ -12,7 +12,9 @@ import java.util.UUID;
 
 @Repository
 public interface RodoviaRepository extends JpaRepository<Rodovia,UUID> {
-    @Query(value = "SELECT Rodovia FROM Rodovia WHERE (mortes > 5)")
+
+    //JPQL
+    @Query(value = "SELECT r FROM Rodovia r WHERE (r.mortes > 5)")
     List<Rodovia> buscaRodoviaComMaisQueCincoMortes();
 
 }
